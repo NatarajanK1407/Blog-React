@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Modal from './Modal'
 
-const AddBlog = ({ title, content, imageUrl }) => {
+const AddBlog = ({ title, content, imageUrl, blogId }) => {
     const [showModal, setShowModal] = useState(false);
 
     const handleCardClick = () => {
@@ -26,7 +26,7 @@ const AddBlog = ({ title, content, imageUrl }) => {
                 </div>
             </div>
             {showModal && (
-                <Modal onClose={handleCloseModal}>
+                <Modal onClose={handleCloseModal} blogId={blogId}>
                     <h2 className="text-xl font-bold mb-2">{title}</h2>
                     {imageUrl && <img src={imageUrl} alt={title} className="mb-4 rounded" />}
                     <p className="text-gray-700 mb-4">{content}</p>

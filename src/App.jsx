@@ -30,7 +30,7 @@ const App = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
                 {blogs.map((blog, index) => (
-                    <AddBlog key={index} title={blog.title} content={blog.content} imageUrl={blog.imageUrl} />
+                    <AddBlog key={index} blogId={index} title={blog.title} content={blog.content} imageUrl={blog.imageUrl} />
                 ))}
             </div>
         </>
