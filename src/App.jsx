@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from './components/navbar'
-import AddBlog from './components/AddBlog'
-import BlogForm from './components/BlogForm'
-import GenereSuggestions from './components/GenereSuggestions'
+import Navbar from './components/Navbar.jsx'
+import AddBlog from './components/AddBlog.jsx'
+import BlogForm from './components/BlogForm.jsx'
+import GenereSuggestions from './components/GenereSuggestions.jsx'
 
 const App = () => {
     const [blogs, setBlogs] = useState([]);
@@ -28,7 +28,7 @@ const App = () => {
             <div>
                 <GenereSuggestions />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap- p-4 bg-gray-100">
                 {blogs.map((blog, index) => (
                     <AddBlog key={index} blogId={index} title={blog.title} content={blog.content} imageUrl={blog.imageUrl} />
                 ))}
