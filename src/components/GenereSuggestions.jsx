@@ -1,25 +1,22 @@
 import React from 'react'
 
-const GenereSuggestions = () => {
+const GenereSuggestions = ({ selectedGenre, setSelectedGenre }) => {
     const suggestions = [
-        'Technology',
-        'Health',
-        'Science',
-        'Travel',
-        'Education',
-        'Finance',
-        'Sports',
-        'Entertainment',
-        'Lifestyle',
-        'Food'
+        'All', 'Technology', 'Health', 'Science', 'Travel', 'Education',
+        'Finance', 'Sports', 'Entertainment', 'Lifestyle', 'Food'
     ];
+
     return (
-        <div>
-            <div className="flex flex-wrap gap-20 my-10 w-max mx-auto">
-                {suggestions.map((suggestion, index) => (
-                    <button key={index} className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded">{suggestion}</button>
-                ))}
-            </div>  
+        <div className="flex justify-center gap-6 overflow-x-auto p-4">
+            {suggestions.map((title, index) => (
+                <div
+                    key={index}
+                    className={`hover:bg-gray-900 hover:text-amber-50  flex-shrink-0 bg-gray-300 shadow-md rounded-lg p-4 m-2 cursor-pointer ${selectedGenre === title ? 'bg-blue-200' : ''}`}
+                    onClick={() => setSelectedGenre(title)}
+                >
+                    <h3 className="text-lg font-bold">{title}</h3>
+                </div>
+            ))}
         </div>
     )
 }

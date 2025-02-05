@@ -6,6 +6,7 @@ import GenereSuggestions from './components/GenereSuggestions.jsx'
 
 const App = () => {
     const [blogs, setBlogs] = useState([]);
+    const [selectedGenre, setSelectedGenre] = useState('All');
 
     useEffect(() => {
         const storedBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
@@ -18,6 +19,10 @@ const App = () => {
         localStorage.setItem('blogs', JSON.stringify(updatedBlogs));
     };
 
+    const filteredBlogs = selectedGenre === 'All'
+        ? blogs
+        : blogs.filter(blog => blog.genre === selectedGenre);
+
     return (
         <>
             <div>
@@ -26,10 +31,10 @@ const App = () => {
             <h1 className='text-center text-3xl my-5'>Everything you need to know..</h1>
             <BlogForm addBlog={addBlog} />
             <div>
-                <GenereSuggestions />
+                <GenereSuggestions selectedGenre={selectedGenre} setSelectedGenre={setSelectedGenre} />
             </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap- p-4 bg-gray-100">
-                {blogs.map((blog, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 bg-gray-100">
+                {filteredBlogs.map((blog, index) => (
                     <AddBlog key={index} blogId={index} title={blog.title} content={blog.content} imageUrl={blog.imageUrl} />
                 ))}
             </div>
