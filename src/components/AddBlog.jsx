@@ -14,7 +14,7 @@ const AddBlog = ({ title, content, imageUrl }) => {
 
     return (
         <>
-            <div className="w-full max-w-md h-100 bg-white shadow-md rounded-lg p-6 cursor-pointer" onClick={handleCardClick}>
+            <div className="w-full max-w-md bg-white shadow-md rounded-lg p-6 cursor-pointer" onClick={handleCardClick}>
                 <h2 className="text-xl font-bold mb-2">{title}</h2>
                 {imageUrl && <img src={imageUrl} alt={title} className="mb-4 rounded" />}
                 <p className="text-gray-700 mb-4">
